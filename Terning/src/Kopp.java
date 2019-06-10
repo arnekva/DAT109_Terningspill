@@ -19,9 +19,27 @@ public class Kopp{
     public int Trill(){
         int sum = 0;
         for(int i = 0; i<terninger.size();i++){
-            terninger.get(i).setVerdi(random.nextInt(7));
+            terninger.get(i).setVerdi(random.nextInt(6)+1);
+            System.out.println("Terningen rullet til: " +terninger.get(i).getVerdi());
             sum += terninger.get(i).getVerdi();
         }
+        this.sum = sum;
         return sum;
+    }
+
+    public int getSum() {
+        return sum;
+    }
+
+    public void setSum(int sum) {
+        this.sum = sum;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

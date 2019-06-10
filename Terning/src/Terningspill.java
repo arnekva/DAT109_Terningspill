@@ -10,29 +10,66 @@ public class Terningspill {
         this.antSpillere = antSpillere;
     }
 
-    public ArrayList<Spiller> leggTilSpiller(String navn) {
+    public void leggTilSpiller(String navn) {
 
-        for (int i = 0; i < antSpillere; i++) {
             spillerliste.add(new Spiller(navn));
 
-        }
-
-        return spillerliste;
     }
 
-    public Spiller spill() {
+    public ArrayList<Spiller> spill() {
         Spiller vinner = null;
         antSpillere = spillerliste.size();
         for (int i = 0; i < antSpillere; i++) {
+            System.out.println("Det er " + spillerliste.get(i).getNavn() + " sin tur!");
             spillerliste.get(i).spill(kopp);
+            System.out.println(spillerliste.get(i).getNavn() + " scoret " +kopp.getSum() + " poeng!");
         }
         vinner = spillerliste.get(0);
+        ArrayList<Spiller> vinnerliste = new ArrayList<Spiller>();
         for (int j = 0; j < antSpillere; j++) {
             if (spillerliste.get(j).getVerdi() > vinner.getVerdi()) {
                 vinner = spillerliste.get(j);
             }
-
         }
-        return vinner;
+        vinnerliste.add(vinner);
+        for (int a = 0; a<antSpillere;a++){
+            if(vinner.getVerdi() == spillerliste.get(a).getVerdi() && vinner.getNavn() != spillerliste.get(a).getNavn()){
+                vinnerliste.add(spillerliste.get(a));
+            }
+        }
+
+        return vinnerliste;
+    }
+
+    public ArrayList<Spiller> getSpillerliste() {
+        return spillerliste;
+    }
+
+    public void setSpillerliste(ArrayList<Spiller> spillerliste) {
+        this.spillerliste = spillerliste;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Kopp getKopp() {
+        return kopp;
+    }
+
+    public void setKopp(Kopp kopp) {
+        this.kopp = kopp;
+    }
+
+    public int getAntSpillere() {
+        return antSpillere;
+    }
+
+    public void setAntSpillere(int antSpillere) {
+        this.antSpillere = antSpillere;
     }
 }
